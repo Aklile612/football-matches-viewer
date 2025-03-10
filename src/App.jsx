@@ -39,8 +39,9 @@ const App = () => {
         if (data.matches) {
           if (selectedTeam === 'EL') {
             setMatches(data.matches.slice(0, 14));
+          } else {
+            setMatches(data.matches.slice(0, 6));
           }
-          setMatches(data.matches.slice(0, 6));
         } else {
           console.log("NO Matches sorry");
         }
