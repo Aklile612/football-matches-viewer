@@ -9,15 +9,15 @@ import { getDateRange } from "./Componets/date";
 const App = () => {
   const [selectedTeam, setselectTeam] = useState("");
   const [matches, setMatches] = useState([]);
-  const { past, today, future } = getDateRange();
+  const { today, future, seasonEnd } = getDateRange();
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     if (!selectedTeam) return;
     const weeklyFiveMatches = async () => {
       try {
-        const unitedM = `/v4/teams/66/matches?dateFrom=${today}&dateTo=2025-05-25`;
-        const cityM = `/v4/teams/65/matches?dateFrom=${today}&dateTo=2025-05-25`;
+        const unitedM = `/v4/teams/66/matches?dateFrom=${today}&dateTo=${seasonEnd}`;
+        const cityM = `/v4/teams/65/matches?dateFrom=${today}&dateTo=${seasonEnd}`;
         const championsL = `/v4/competitions/CL/matches?dateFrom=${today}&dateTo=${future}`;
         const EupropaL = `/v4/competitions/PL/matches?dateFrom=${past}&dateTo=${today}`;
         const API_URL =

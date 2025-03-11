@@ -4,17 +4,19 @@ export const getDateRange = () => {
   const todayFormatted = formatDate(today);
 
   const futureDate = new Date(today);
-  futureDate.setDate(today.getDate() + 7); // Adding 7 days
+  futureDate.setDate(today.getDate() + 7);
 
+  const seasonEnd = new Date(today);
+  seasonEnd.setDate(today.getDate() + 90);
 
   const pastDate = new Date(today);
-  pastDate.setDate(today.getDate() - 7); // Subtracting 7 days
+  pastDate.setDate(today.getDate() - 7);
 
- 
   const futureFormatted = formatDate(futureDate);
   const pastFormatted = formatDate(pastDate);
+  const seasonEndFormatted = formatDate(seasonEnd);
 
-  return { today: todayFormatted, future: futureFormatted, past: pastFormatted };
+  return { today: todayFormatted, future: futureFormatted, past: pastFormatted, seasonEnd: seasonEndFormatted };
 };
 
 // Helper function to format date as YYYY-MM-DD
