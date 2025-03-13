@@ -9,7 +9,7 @@ import { getDateRange } from "./Componets/date";
 const App = () => {
   const [selectedTeam, setselectTeam] = useState("");
   const [matches, setMatches] = useState([]);
-  const { today, future, seasonEnd } = getDateRange();
+  const { today, future, past, seasonEnd } = getDateRange();
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
