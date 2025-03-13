@@ -9,12 +9,14 @@ import { getDateRange } from "./Componets/date";
 const App = () => {
   const [selectedTeam, setselectTeam] = useState("");
   const [matches, setMatches] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { today, future, past, seasonEnd } = getDateRange();
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     if (!selectedTeam) return;
     const weeklyFiveMatches = async () => {
+      setLoading(true);
       try {
         const unitedM = `/v4/teams/66/matches?dateFrom=${today}&dateTo=${seasonEnd}`;
         const cityM = `/v4/teams/65/matches?dateFrom=${today}&dateTo=${seasonEnd}`;
@@ -45,8 +47,10 @@ const App = () => {
         } else {
           console.log("NO Matches sorry");
         }
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data: ", error);
+        setLoading(false);
       }
     };
     weeklyFiveMatches();
@@ -65,7 +69,9 @@ const App = () => {
         <button className="custom-button" onClick={() => setselectTeam("EL")}>Past Matches</button>
       </div>
       <div className="weekly-match">
-        {!selectedTeam ? (
+        {loading ? (
+          <p>Loading matches...</p>
+        ) : !selectedTeam ? (
           <WeeklyMatches />
         ) : selectedTeam === "United" ? (
           <UnitedMatches matches={matches} />
