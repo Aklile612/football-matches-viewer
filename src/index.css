@@ -194,3 +194,11 @@ ul {
   background: linear-gradient(135deg, #1A237E, #4A148C);
   border-radius: 10px;
 }
+
+.error-message {
+  color: #ff6b6b;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+}

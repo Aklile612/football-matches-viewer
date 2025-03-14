@@ -10,11 +10,13 @@ const App = () => {
   const [selectedTeam, setselectTeam] = useState("");
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { today, future, past, seasonEnd } = getDateRange();
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     if (!selectedTeam) return;
+    setError("");
     const weeklyFiveMatches = async () => {
       setLoading(true);
       try {
@@ -50,6 +52,7 @@ const App = () => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data: ", error);
+        setError("Failed to fetch matches. Check your API key or try again later.");
         setLoading(false);
       }
     };
@@ -69,6 +72,7 @@ const App = () => {
         <button className="custom-button" onClick={() => setselectTeam("EL")}>Past Matches</button>
       </div>
       <div className="weekly-match">
+        {error && <p className="error-message">{error}</p>}
         {loading ? (
           <p>Loading matches...</p>
         ) : !selectedTeam ? (
