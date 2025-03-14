@@ -324,7 +324,9 @@ ul {
 }
 
 @media (max-width: 768px) {
-  body {
+html { scroll-behavior: smooth; }
+
+body {
     min-height: 100dvh;
     padding-top: 10px;
   }
