@@ -95,6 +95,11 @@ h1:hover {
   border-radius: 20px;
 }
 
+.brefresh:focus {
+  background-color: #2e7d32;
+  border-radius: 20px;
+}
+
 /* Weekly matches container */
 .weekly-match {
   display: flex;

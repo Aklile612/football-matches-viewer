@@ -11,6 +11,7 @@ const App = () => {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [refreshKey, setRefreshKey] = useState(0);
   const { today, future, past, seasonEnd } = getDateRange();
   const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -57,7 +58,7 @@ const App = () => {
       }
     };
     weeklyFiveMatches();
-  }, [selectedTeam, today, future, API_KEY]);
+  }, [selectedTeam, today, future, past, seasonEnd, refreshKey, API_KEY]);
 
   return (
     <div className="container">
@@ -70,6 +71,7 @@ const App = () => {
         <button className="custom-button bcity" onClick={() => setselectTeam("City")}>Manchester City</button>
         <button className="custom-button bchamp" onClick={() => setselectTeam("CL")}>Champions League</button>
         <button className="custom-button" onClick={() => setselectTeam("EL")}>Past Matches</button>
+        <button className="custom-button brefresh" onClick={() => setRefreshKey(k => k + 1)}><i className="fa-solid fa-rotate"></i> Refresh</button>
       </div>
       <div className="weekly-match">
         {error && <p className="error-message">{error}</p>}
