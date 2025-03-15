@@ -16,7 +16,7 @@ const ChampionsLeagueMatches = ({matches})=>{
                     <div className="teamsU">
                         <img src={match.homeTeam.crest} alt="home team flag" /><p>{match.homeTeam.tla}</p> 
                     </div>
-                    <div className="teamsU"><p>vs</p></div>
+                    <div className="teamsU"><p>{match.status === "FINISHED" ? `${match.score.fullTime.home ?? "-"} - ${match.score.fullTime.away ?? "-"}` : "vs"}</p></div>
                     <div className="teamsU">
                        <img src={match.awayTeam.crest} alt="away team flag"/><p>{match.awayTeam.tla}</p>
                     </div> 

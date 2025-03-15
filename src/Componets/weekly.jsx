@@ -45,7 +45,7 @@ const WeeklyMatches = () => {
                 <div className="teams">
                   <img src={match.homeTeam.crest} alt="home team flag" /><p>{match.homeTeam.tla}</p>
                 </div>
-                <div className="teams"><p>vs</p></div>
+                <div className="teams"><p>{match.status === "FINISHED" ? `${match.score.fullTime.home ?? "-"} - ${match.score.fullTime.away ?? "-"}` : "vs"}</p></div>
                 <div className="teams">
                   <img src={match.awayTeam.crest} alt="away team flag" /><p>{match.awayTeam.tla}</p>
                 </div>
