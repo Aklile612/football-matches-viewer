@@ -54,6 +54,7 @@ const WeeklyMatches = () => {
                 <p>Date: {new Date(match.utcDate).toLocaleDateString()}</p>
                 <p>Time: {new Date(match.utcDate).toLocaleTimeString()}</p>
               </div>
+              {match.status && <span className={`status-badge ${match.status.toLowerCase()}`}>{match.status}</span>}
             </li>
           ))}
         </ul>
