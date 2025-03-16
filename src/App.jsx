@@ -70,14 +70,15 @@ const App = () => {
         <button className="custom-button bmanutd" onClick={() => setselectTeam("United")}>Manchester United</button>
         <button className="custom-button bcity" onClick={() => setselectTeam("City")}>Manchester City</button>
         <button className="custom-button bchamp" onClick={() => setselectTeam("CL")}>Champions League</button>
-        <button className="custom-button" onClick={() => setselectTeam("EL")}>Past Matches</button>
+        <button className="custom-button bpast" onClick={() => setselectTeam("EL")}>Past Matches</button>
         <button className="custom-button brefresh" onClick={() => setRefreshKey(k => k + 1)}><i className="fa-solid fa-rotate"></i> Refresh</button>
       </div>
       <div className="weekly-match">
         {error && <p className="error-message">{error}</p>}
         {loading ? (
           <p>Loading matches...</p>
-        ) : !selectedTeam ? (
+        ) : selectedTeam && matches.length > 0 && <p className="match-count">{matches.length} matches</p>}
+        {!selectedTeam ? (
           <WeeklyMatches />
         ) : selectedTeam === "United" ? (
           <UnitedMatches matches={matches} />

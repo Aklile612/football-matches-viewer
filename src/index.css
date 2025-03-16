@@ -100,6 +100,17 @@ h1:hover {
   border-radius: 20px;
 }
 
+.bpast:focus {
+  background-color: #7b1fa2;
+  border-radius: 20px;
+}
+
+.match-count {
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 5px;
+}
+
 /* Weekly matches container */
 .weekly-match {
   display: flex;
