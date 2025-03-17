@@ -90,6 +90,9 @@ const App = () => {
           <PremerieLeagueMatches matches={matches} />
         ) : null}
       </div>
+      <div className="footer">
+        <p>Football Fixtures © {new Date().getFullYear()}</p>
+      </div>
     </div>
   );
 };
