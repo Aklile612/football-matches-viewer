@@ -66,11 +66,11 @@ const App = () => {
         <h1><i className="fa-solid fa-futbol"></i>Football Fixture</h1>
       </div>
       <div className="buttons-container">
-        <button className="custom-button bmanutd" onClick={() => setselectTeam("")}>Home</button>
-        <button className="custom-button bmanutd" onClick={() => setselectTeam("United")}>Manchester United</button>
-        <button className="custom-button bcity" onClick={() => setselectTeam("City")}>Manchester City</button>
-        <button className="custom-button bchamp" onClick={() => setselectTeam("CL")}>Champions League</button>
-        <button className="custom-button bpast" onClick={() => setselectTeam("EL")}>Past Matches</button>
+        <button className={`custom-button bmanutd${selectedTeam === "" ? " active" : ""}`} onClick={() => setselectTeam("")}>Home</button>
+        <button className={`custom-button bmanutd${selectedTeam === "United" ? " active" : ""}`} onClick={() => setselectTeam("United")}>Manchester United</button>
+        <button className={`custom-button bcity${selectedTeam === "City" ? " active" : ""}`} onClick={() => setselectTeam("City")}>Manchester City</button>
+        <button className={`custom-button bchamp${selectedTeam === "CL" ? " active" : ""}`} onClick={() => setselectTeam("CL")}>Champions League</button>
+        <button className={`custom-button bpast${selectedTeam === "EL" ? " active" : ""}`} onClick={() => setselectTeam("EL")}>Past Matches</button>
         <button className="custom-button brefresh" onClick={() => setRefreshKey(k => k + 1)}><i className="fa-solid fa-rotate"></i> Refresh</button>
       </div>
       <div className="weekly-match">

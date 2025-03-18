@@ -80,17 +80,17 @@ h1:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.bmanutd:focus {
+.bmanutd.active, .bmanutd:focus {
   background-color: #DA291C;
   border-radius: 20px;
 }
 
-.bcity:focus {
+.bcity.active, .bcity:focus {
   background-color: #436c97;
   border-radius: 20px;
 }
 
-.bchamp:focus {
+.bchamp.active, .bchamp:focus {
   background-color: #0a1596;
   border-radius: 20px;
 }
@@ -100,7 +100,7 @@ h1:hover {
   border-radius: 20px;
 }
 
-.bpast:focus {
+.bpast.active, .bpast:focus {
   background-color: #7b1fa2;
   border-radius: 20px;
 }
