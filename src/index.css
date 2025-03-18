@@ -176,6 +176,12 @@ ul {
   transform: scale(1.1);
 }
 
+.teams small, .teamsU small {
+  font-size: 10px;
+  color: #ccc;
+  margin-top: 2px;
+}
+
 .teams p, .teamsU p {
   font-size: 18px;
   margin: 0;

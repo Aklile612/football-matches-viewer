@@ -12,6 +12,7 @@ const MatchCard = ({ match, showScore, variant }) => {
         <div className={variant ? "teamsU" : "teams"}>
           <img src={match.homeTeam.crest} alt="home team flag" />
           <p>{match.homeTeam.tla}</p>
+          <small>{match.homeTeam.name}</small>
         </div>
         <div className={variant ? "teamsU" : "teams"}>
           <p>{score}</p>
@@ -19,6 +20,7 @@ const MatchCard = ({ match, showScore, variant }) => {
         <div className={variant ? "teamsU" : "teams"}>
           <img src={match.awayTeam.crest} alt="away team flag" />
           <p>{match.awayTeam.tla}</p>
+          <small>{match.awayTeam.name}</small>
         </div>
       </div>
       <div className="dates">
