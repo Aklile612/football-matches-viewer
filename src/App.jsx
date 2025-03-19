@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import UnitedMatches from "./Componets/united";
 import WeeklyMatches from "./Componets/weekly";
 import CityMatches from "./Componets/city";
@@ -76,7 +76,9 @@ const App = () => {
       <div className="weekly-match">
         {error && <p className="error-message">{error}</p>}
         {loading ? (
-          <p>Loading matches...</p>
+          <div className="skeleton-container">
+            {[1, 2, 3].map(i => <div key={i} className="skeleton-card" />)}
+          </div>
         ) : selectedTeam && matches.length > 0 && <p className="match-count">{matches.length} matches</p>}
         {!selectedTeam ? (
           <WeeklyMatches />
