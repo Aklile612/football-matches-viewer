@@ -64,6 +64,7 @@ const App = () => {
     <div className="container">
       <div className="head">
         <h1><i className="fa-solid fa-futbol"></i>Football Fixture</h1>
+        <p className="season-info">Season {new Date().getFullYear() - 1}/{new Date().getFullYear()}</p>
       </div>
       <div className="buttons-container">
         <button className={`custom-button bmanutd${selectedTeam === "" ? " active" : ""}`} onClick={() => setselectTeam("")}>Home</button>

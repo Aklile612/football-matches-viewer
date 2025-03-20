@@ -32,8 +32,16 @@ body {
 /* Header styling */
 .head {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
+}
+
+.season-info {
+  font-size: 14px;
+  color: #ccc;
+  margin: 5px 0 0;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
