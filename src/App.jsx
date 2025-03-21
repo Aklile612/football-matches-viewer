@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import UnitedMatches from "./Componets/united";
 import WeeklyMatches from "./Componets/weekly";
 import CityMatches from "./Componets/city";
@@ -12,6 +12,11 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleTeamSelect = (team) => {
+    setselectTeam(team);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   const { today, future, past, seasonEnd } = getDateRange();
   const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -67,11 +72,11 @@ const App = () => {
         <p className="season-info">Season {new Date().getFullYear() - 1}/{new Date().getFullYear()}</p>
       </div>
       <div className="buttons-container">
-        <button className={`custom-button bmanutd${selectedTeam === "" ? " active" : ""}`} onClick={() => setselectTeam("")}>Home</button>
-        <button className={`custom-button bmanutd${selectedTeam === "United" ? " active" : ""}`} onClick={() => setselectTeam("United")}>Manchester United</button>
-        <button className={`custom-button bcity${selectedTeam === "City" ? " active" : ""}`} onClick={() => setselectTeam("City")}>Manchester City</button>
-        <button className={`custom-button bchamp${selectedTeam === "CL" ? " active" : ""}`} onClick={() => setselectTeam("CL")}>Champions League</button>
-        <button className={`custom-button bpast${selectedTeam === "EL" ? " active" : ""}`} onClick={() => setselectTeam("EL")}>Past Matches</button>
+        <button className={`custom-button bmanutd${selectedTeam === "" ? " active" : ""}`} onClick={() => handleTeamSelect("")}>Home</button>
+        <button className={`custom-button bmanutd${selectedTeam === "United" ? " active" : ""}`} onClick={() => handleTeamSelect("United")}>Manchester United</button>
+        <button className={`custom-button bcity${selectedTeam === "City" ? " active" : ""}`} onClick={() => handleTeamSelect("City")}>Manchester City</button>
+        <button className={`custom-button bchamp${selectedTeam === "CL" ? " active" : ""}`} onClick={() => handleTeamSelect("CL")}>Champions League</button>
+        <button className={`custom-button bpast${selectedTeam === "EL" ? " active" : ""}`} onClick={() => handleTeamSelect("EL")}>Past Matches</button>
         <button className="custom-button brefresh" onClick={() => setRefreshKey(k => k + 1)}><i className="fa-solid fa-rotate"></i> Refresh</button>
       </div>
       <div className="weekly-match">
