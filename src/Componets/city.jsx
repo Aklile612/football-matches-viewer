@@ -4,6 +4,7 @@ const CityMatches = ({ matches }) => {
   return (
     <div className="allcity">
       <h3>Manchester city six games</h3>
+      <h4>Match Week {matches[0]?.matchday || "-"}</h4>
       {matches.length > 0 ? (
         <ul>
           {matches.map((match, index) => (
