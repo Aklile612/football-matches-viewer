@@ -4,10 +4,17 @@ const fallbackCrest = (e) => {
 
 const MatchCard = ({ match, showScore, variant }) => {
   const cardClass = variant === "united" ? "weekU" : variant === "city" ? "weekU" : "week";
-  const score = match.status === "FINISHED"
-    ? `${match.score.fullTime.home ?? "-"} - ${match.score.fullTime.away ?? "-"}`
+  const homeScore = match.score?.fullTime?.home;
+  const awayScore = match.score?.fullTime?.away;
+  const isFinished = match.status === "FINISHED";
+  const scoreClass = isFinished && homeScore != null && awayScore != null
+    ? homeScore > awayScore ? "score-win" : homeScore < awayScore ? "score-loss" : "score-draw"
+    : "";
+
+  const score = isFinished
+    ? `${homeScore ?? "-"} - ${awayScore ?? "-"}`
     : showScore
-      ? `${match.score.fullTime.home ?? "-"} : ${match.score.fullTime.away ?? "-"}`
+      ? `${homeScore ?? "-"} : ${awayScore ?? "-"}`
       : "vs";
 
   return (
@@ -19,7 +26,7 @@ const MatchCard = ({ match, showScore, variant }) => {
           <small>{match.homeTeam.name}</small>
         </div>
         <div className={variant ? "teamsU" : "teams"}>
-          <p>{score}</p>
+          <p className={scoreClass}>{score}</p>
         </div>
         <div className={variant ? "teamsU" : "teams"}>
           <img src={match.awayTeam.crest} alt="away team flag" onError={fallbackCrest} />

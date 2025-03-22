@@ -160,7 +160,8 @@ ul {
 
 .week:hover, .weekU:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .all, .allU {
@@ -199,6 +200,21 @@ ul {
 .teams p, .teamsU p {
   font-size: 18px;
   margin: 0;
+}
+
+.score-win {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.score-loss {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.score-draw {
+  color: #ff9800;
+  font-weight: bold;
 }
 
 .dates {
