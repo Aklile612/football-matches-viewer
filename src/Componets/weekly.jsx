@@ -8,9 +8,11 @@ const WeeklyMatches = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   const [matches, setMatches] = useState([]);
+  const [weeklyError, setWeeklyError] = useState("");
 
   useEffect(() => {
     const fetchWeeklyMatches = async () => {
+      setWeeklyError("");
       try {
         const response = await fetch(API_URL, {
           headers: {
@@ -29,6 +31,7 @@ const WeeklyMatches = () => {
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+        setWeeklyError("Unable to load weekly matches.");
       }
     };
 
@@ -38,6 +41,7 @@ const WeeklyMatches = () => {
   return (
     <div>
       <h3>Weekly Premier League Matches</h3><br />
+      {weeklyError && <p className="error-message">{weeklyError}</p>}
       {matches.length > 0 ? (
         <ul>
           {matches.map((match, index) => (
