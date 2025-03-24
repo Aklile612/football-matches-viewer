@@ -128,8 +128,11 @@ h1:hover {
 /* Weekly matches container */
 .weekly-match {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 20px;
+  min-height: 200px;
 }
 
 ul {
