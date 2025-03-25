@@ -29,12 +29,12 @@ const App = () => {
         const unitedM = `/v4/teams/66/matches?dateFrom=${today}&dateTo=${seasonEnd}`;
         const cityM = `/v4/teams/65/matches?dateFrom=${today}&dateTo=${seasonEnd}`;
         const championsL = `/v4/competitions/CL/matches?dateFrom=${today}&dateTo=${future}`;
-        const EupropaL = `/v4/competitions/PL/matches?dateFrom=${past}&dateTo=${today}`;
+        const pastMatchesUrl = `/v4/competitions/PL/matches?dateFrom=${past}&dateTo=${today}`;
         const API_URL =
           selectedTeam === "United" ? unitedM :
           selectedTeam === "City" ? cityM :
           selectedTeam === "CL" ? championsL :
-          selectedTeam === "EL" ? EupropaL :
+          selectedTeam === "EL" ? pastMatchesUrl :
           "";
         const response = await fetch(API_URL, {
           headers: {
