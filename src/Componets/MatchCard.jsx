@@ -6,6 +6,13 @@ const fallbackCrest = (e) => {
 
 const MatchCard = ({ match, showScore, variant }) => {
   const cardClass = variant === "united" ? "weekU" : variant === "city" ? "weekU" : "week";
+  const statusLabels = {
+    SCHEDULED: "Scheduled", TIMED: "Scheduled", LIVE: "Live",
+    IN_PLAY: "Live", PAUSED: "Paused", FINISHED: "Full Time",
+    POSTPONED: "Postponed", CANCELLED: "Cancelled"
+  };
+  const statusText = statusLabels[match.status] || match.status;
+
   const homeScore = match.score?.fullTime?.home;
   const awayScore = match.score?.fullTime?.away;
   const isFinished = match.status === "FINISHED";
@@ -40,7 +47,9 @@ const MatchCard = ({ match, showScore, variant }) => {
         <p>Date: {new Date(match.utcDate).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</p>
         <p>Time: {new Date(match.utcDate).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</p>
       </div>
-      {match.status && <span className={`status-badge ${match.status.toLowerCase()}`}>{match.status}</span>}
+      {match.venue && <p className="venue">{match.venue}</p>}
+      {match.stadium && <p className="venue">{match.stadium}</p>}
+      {match.status && <span className={`status-badge ${match.status.toLowerCase()}`}>{statusText}</span>}
     </li>
   );
 };
