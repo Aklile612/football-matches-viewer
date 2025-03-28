@@ -25,7 +25,7 @@ const WeeklyMatches = () => {
         }
         const data = await response.json();
         if (data.matches) {
-          setMatches(data.matches);
+          setMatches([...data.matches].sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate)));
         } else {
           console.log("No matches found for the given date range");
         }
@@ -40,7 +40,8 @@ const WeeklyMatches = () => {
 
   return (
     <div>
-      <h3>Weekly Premier League Matches</h3><br />
+      <h3>Weekly Premier League Matches</h3>
+      <p className="match-count">English Premier League</p><br />
       {weeklyError && <p className="error-message">{weeklyError}</p>}
       {matches.length > 0 ? (
         <ul>

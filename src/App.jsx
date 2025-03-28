@@ -47,10 +47,11 @@ const App = () => {
         }
         const data = await response.json();
         if (data.matches) {
+          const sorted = [...data.matches].sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
           if (selectedTeam === 'EL') {
-            setMatches(data.matches.slice(0, 14));
+            setMatches(sorted.slice(0, 14));
           } else {
-            setMatches(data.matches.slice(0, 6));
+            setMatches(sorted.slice(0, 6));
           }
         } else {
           console.log("NO Matches sorry");
