@@ -12,6 +12,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [refreshKey, setRefreshKey] = useState(0);
+  const [lastUpdated, setLastUpdated] = useState("");
 
   const handleTeamSelect = (team) => {
     setselectTeam(team);
@@ -56,6 +57,7 @@ const App = () => {
         } else {
           console.log("NO Matches sorry");
         }
+        setLastUpdated(new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data: ", error);
@@ -87,7 +89,10 @@ const App = () => {
             {[1, 2, 3].map(i => <div key={i} className="skeleton-card" />)}
           </div>
         ) : selectedTeam && !loading && (
-          <p className="match-count">{matches.length} matches</p>
+          <>
+            <p className="match-count">{matches.length} matches</p>
+            {lastUpdated && <p className="last-updated">Updated {lastUpdated}</p>}
+          </>
         )}
         {!selectedTeam ? (
           <WeeklyMatches />
