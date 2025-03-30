@@ -44,6 +44,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+h3 {
+  font-size: 22px;
+  margin: 15px 0 5px;
+  color: #fff;
+}
+
 h4 {
   font-size: 16px;
   color: #ddd;
@@ -122,7 +128,7 @@ h1:hover {
 .match-count {
   font-size: 14px;
   color: #ccc;
-  margin-top: 5px;
+  margin: 5px 0 2px;
 }
 
 /* Weekly matches container */
