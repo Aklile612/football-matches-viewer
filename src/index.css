@@ -37,6 +37,12 @@ body {
   padding: 20px;
 }
 
+.date-range {
+  font-size: 11px;
+  color: #888;
+  margin: 2px 0 0;
+}
+
 .season-info {
   font-size: 14px;
   color: #ccc;
