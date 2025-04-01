@@ -47,8 +47,8 @@ const MatchCard = ({ match, showScore, variant }) => {
         <p>Date: {new Date(match.utcDate).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</p>
         <p>Time: {new Date(match.utcDate).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</p>
       </div>
+      {match.competition?.name && <p className="venue">{match.competition.name}</p>}
       {match.venue && <p className="venue">{match.venue}</p>}
-      {match.stadium && <p className="venue">{match.stadium}</p>}
       {match.status && <span className={`status-badge ${match.status.toLowerCase()}`}>{statusText}</span>}
     </li>
   );
