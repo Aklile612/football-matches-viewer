@@ -110,6 +110,9 @@ const App = () => {
       <div className="footer">
         <p>Football Fixtures © {new Date().getFullYear()}</p>
       </div>
+      <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">
+        <i className="fa-solid fa-arrow-up"></i>
+      </button>
     </div>
   );
 };
