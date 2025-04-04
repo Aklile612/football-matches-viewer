@@ -23,6 +23,10 @@ const MatchCard = ({ match, showScore, variant }) => {
     ? homeScore > awayScore ? "score-win" : homeScore < awayScore ? "score-loss" : "score-draw"
     : "";
 
+  const resultEmoji = isFinished && showScore
+    ? homeScore > awayScore ? "\u{1F7E2}" : homeScore < awayScore ? "\u{1F534}" : "\u{1F7E1}"
+    : "";
+
   const score = isFinished
     ? `${homeScore ?? "-"} - ${awayScore ?? "-"}`
     : showScore
@@ -38,7 +42,7 @@ const MatchCard = ({ match, showScore, variant }) => {
           <small>{match.homeTeam.name}</small>
         </div>
         <div className={variant ? "teamsU" : "teams"}>
-          <p className={scoreClass}>{score}</p>
+          <p className={scoreClass}>{resultEmoji} {score}</p>
         </div>
         <div className={variant ? "teamsU" : "teams"}>
           <img src={match.awayTeam.crest} alt="away team flag" onError={fallbackCrest} />
