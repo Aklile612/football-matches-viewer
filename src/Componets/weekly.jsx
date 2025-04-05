@@ -9,10 +9,12 @@ const WeeklyMatches = () => {
 
   const [matches, setMatches] = useState([]);
   const [weeklyError, setWeeklyError] = useState("");
+  const [weeklyLoading, setWeeklyLoading] = useState(false);
 
   useEffect(() => {
     const fetchWeeklyMatches = async () => {
       setWeeklyError("");
+      setWeeklyLoading(true);
       try {
         const response = await fetch(API_URL, {
           headers: {
@@ -29,9 +31,11 @@ const WeeklyMatches = () => {
         } else {
           console.log("No matches found for the given date range");
         }
+        setWeeklyLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
         setWeeklyError("Unable to load weekly matches.");
+        setWeeklyLoading(false);
       }
     };
 
@@ -43,7 +47,11 @@ const WeeklyMatches = () => {
       <h3>Weekly Premier League Matches</h3>
       <p className="match-count">English Premier League</p><br />
       {weeklyError && <p className="error-message">{weeklyError}</p>}
-      {matches.length > 0 ? (
+      {weeklyLoading ? (
+        <div className="skeleton-container">
+          {[1, 2, 3].map(i => <div key={i} className="skeleton-card" />)}
+        </div>
+      ) : matches.length > 0 ? (
         <ul>
           {matches.map((match, index) => (
             <MatchCard key={index} match={match} />
