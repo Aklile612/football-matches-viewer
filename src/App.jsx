@@ -84,7 +84,12 @@ const App = () => {
         <button className="custom-button brefresh" onClick={() => setRefreshKey(k => k + 1)}><i className="fa-solid fa-rotate"></i> Refresh</button>
       </div>
       <div className="weekly-match">
-        {error && <p className="error-message">{error}</p>}
+        {error && (
+          <div>
+            <p className="error-message">{error}</p>
+            <button className="custom-button brefresh" onClick={() => setRefreshKey(k => k + 1)} style={{ marginTop: "10px" }}>Retry</button>
+          </div>
+        )}
         {loading ? (
           <div className="skeleton-container">
             {[1, 2, 3].map(i => <div key={i} className="skeleton-card" />)}
