@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import UnitedMatches from "./Componets/united";
 import WeeklyMatches from "./Componets/weekly";
 import CityMatches from "./Componets/city";
@@ -114,6 +114,7 @@ const App = () => {
       </div>
       <div className="footer">
         <p>Football Fixtures © {new Date().getFullYear()}</p>
+        <p className="attribution">Powered by football-data.org</p>
       </div>
       <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">
         <i className="fa-solid fa-arrow-up"></i>
