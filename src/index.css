@@ -16,6 +16,10 @@ body {
   padding-top: 20px;
 }
 
+body:active {
+  animation-play-state: paused;
+}
+
 /* Gradient Animation */
 @keyframes gradientAnimation {
   0% {
