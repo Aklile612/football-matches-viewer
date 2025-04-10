@@ -45,7 +45,9 @@ const WeeklyMatches = () => {
   return (
     <div>
       <h3>Weekly Premier League Matches</h3>
-      <p className="match-count">English Premier League</p><br />
+      <p className="match-count">English Premier League</p>
+      {matches.length > 0 && <h4>Match Week {matches[0].matchday}</h4>}
+      <br />
       {weeklyError && <p className="error-message">{weeklyError}</p>}
       {weeklyLoading ? (
         <div className="skeleton-container">
