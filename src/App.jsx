@@ -110,6 +110,11 @@ const App = () => {
           <ChampionsLeagueMatches matches={matches} />
         ) : selectedTeam === "EL" ? (
           <PremerieLeagueMatches matches={matches} />
+        ) : selectedTeam ? (
+          <div className="empty-state">
+            <i className="fa-solid fa-calendar-xmark"></i>
+            <p>No matches found for this period.</p>
+          </div>
         ) : null}
       </div>
       <div className="footer">
