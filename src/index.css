@@ -227,6 +227,11 @@ ul {
   margin: 0;
 }
 
+.winner {
+  font-weight: bold;
+  color: #4caf50;
+}
+
 .score-win {
   color: #4caf50;
   font-weight: bold;

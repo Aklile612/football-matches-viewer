@@ -23,6 +23,11 @@ const MatchCard = ({ match, showScore, variant }) => {
     ? homeScore > awayScore ? "score-win" : homeScore < awayScore ? "score-loss" : "score-draw"
     : "";
 
+  const homeWon = isFinished && homeScore != null && homeScore > awayScore;
+  const awayWon = isFinished && awayScore != null && awayScore > homeScore;
+  const homeClass = homeWon ? "winner" : "";
+  const awayClass = awayWon ? "winner" : "";
+
   const resultEmoji = isFinished && showScore
     ? homeScore > awayScore ? "\u{1F7E2}" : homeScore < awayScore ? "\u{1F534}" : "\u{1F7E1}"
     : "";
@@ -38,7 +43,7 @@ const MatchCard = ({ match, showScore, variant }) => {
       <div className={variant ? "allU" : "all"}>
         <div className={variant ? "teamsU" : "teams"}>
           <img src={match.homeTeam.crest} alt="home team flag" onError={fallbackCrest} />
-          <p>{match.homeTeam.tla}</p>
+          <p className={homeClass}>{match.homeTeam.tla}</p>
           <small>{match.homeTeam.name}</small>
         </div>
         <div className={variant ? "teamsU" : "teams"}>
@@ -46,7 +51,7 @@ const MatchCard = ({ match, showScore, variant }) => {
         </div>
         <div className={variant ? "teamsU" : "teams"}>
           <img src={match.awayTeam.crest} alt="away team flag" onError={fallbackCrest} />
-          <p>{match.awayTeam.tla}</p>
+          <p className={awayClass}>{match.awayTeam.tla}</p>
           <small>{match.awayTeam.name}</small>
         </div>
       </div>
