@@ -73,6 +73,7 @@ const App = () => {
       <div className="head">
         <h1><i className="fa-solid fa-futbol"></i>Football Fixture</h1>
         <p className="season-info">Season {new Date().getFullYear() - 1}/{new Date().getFullYear()}</p>
+        <div className="progress-bar"><div className="progress-fill" style={{ width: `${Math.min(100, ((new Date().getMonth() + 1) / 12) * 100)}%` }} /></div>
         <p className="date-range">{today} — {future} (weekly)</p>
       </div>
       <div className="buttons-container">
