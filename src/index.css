@@ -324,6 +324,10 @@ ul {
 }
 
 @media (max-width: 768px) {
+  body {
+    min-height: 100dvh;
+    padding-top: 10px;
+  }
   .custom-button {
     width: 120px;
     height: 30px;
