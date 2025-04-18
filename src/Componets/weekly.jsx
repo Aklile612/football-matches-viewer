@@ -54,11 +54,14 @@ const WeeklyMatches = () => {
           {[1, 2, 3].map(i => <div key={i} className="skeleton-card" />)}
         </div>
       ) : matches.length > 0 ? (
-        <ul>
-          {matches.map((match, index) => (
-            <MatchCard key={index} match={match} />
-          ))}
-        </ul>
+        <>
+          <p className="match-count">{matches.length} upcoming matches</p>
+          <ul>
+            {matches.map((match, index) => (
+              <MatchCard key={index} match={match} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>No matches found.</p>
       )}
