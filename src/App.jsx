@@ -13,6 +13,7 @@ const App = () => {
   const [error, setError] = useState("");
   const [refreshKey, setRefreshKey] = useState(0);
   const [lastUpdated, setLastUpdated] = useState("");
+  const [sortAsc, setSortAsc] = useState(true);
 
   const handleTeamSelect = (team) => {
     setselectTeam(team);
@@ -48,7 +49,7 @@ const App = () => {
         }
         const data = await response.json();
         if (data.matches) {
-          const sorted = [...data.matches].sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
+          const sorted = [...data.matches].sort((a, b) => sortAsc ? new Date(a.utcDate) - new Date(b.utcDate) : new Date(b.utcDate) - new Date(a.utcDate));
           if (selectedTeam === 'EL') {
             setMatches(sorted.slice(0, 14));
           } else {
@@ -66,7 +67,7 @@ const App = () => {
       }
     };
     weeklyFiveMatches();
-  }, [selectedTeam, today, future, past, seasonEnd, refreshKey, API_KEY]);
+  }, [selectedTeam, today, future, past, seasonEnd, refreshKey, sortAsc, API_KEY]);
 
   return (
     <div className="container">
@@ -83,6 +84,7 @@ const App = () => {
         <button className={`custom-button bchamp${selectedTeam === "CL" ? " active" : ""}`} onClick={() => handleTeamSelect("CL")}>Champions League</button>
         <button className={`custom-button bpast${selectedTeam === "EL" ? " active" : ""}`} onClick={() => handleTeamSelect("EL")}>Past Matches</button>
         <button className="custom-button brefresh" onClick={() => setRefreshKey(k => k + 1)}><i className="fa-solid fa-rotate"></i> Refresh</button>
+        <button className="custom-button bchamp" onClick={() => setSortAsc(p => !p)}><i className="fa-solid fa-arrow-up-wide-short"></i> {sortAsc ? "Oldest" : "Newest"}</button>
       </div>
       <div className="weekly-match">
         {error && (
