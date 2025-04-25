@@ -122,7 +122,7 @@ const App = () => {
       </div>
       <div className="footer">
         <p>Football Fixtures © {new Date().getFullYear()}</p>
-        <p className="attribution">Powered by football-data.org</p>
+        <p className="attribution">Data by <a href="https://www.football-data.org" target="_blank" rel="noopener noreferrer">football-data.org</a></p>
       </div>
       <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">
         <i className="fa-solid fa-arrow-up"></i>
