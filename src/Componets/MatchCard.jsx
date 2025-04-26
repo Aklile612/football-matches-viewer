@@ -1,7 +1,7 @@
 import { memo } from "react";
 
 const fallbackCrest = (e) => {
-  e.target.src = "/vite.svg";
+  e.target.src = "/favicon.svg";
 };
 
 const MatchCard = ({ match, showScore, variant }) => {
